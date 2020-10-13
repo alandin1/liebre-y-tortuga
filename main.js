@@ -61,4 +61,37 @@ class Corredor {
       }
     }
     
-    
+    class Carrera {
+        ganador = null
+        tortuga = new Tortuga()
+        liebre = new Liebre()
+        recorridoTotal = 0
+        constructor(recorridoTotal=90) {
+          this.recorridoTotal = recorridoTotal
+        }
+        inicio(){
+          let a,b
+          while(!this.ganador){
+            a = this.tortuga.reaction()
+            console.log(`Recorrido tortuga: ${a}`)
+      
+            b = this.liebre.reaction()
+            console.log(`Recorrido liebre: ${b}`)
+      
+            if(a >= this.recorridoTotal && b >= this.recorridoTotal){
+              this.ganador = "Empate"
+            }else if(a >= this.recorridoTotal){
+              this.ganador = "Gano Tortuga"
+            }else if(b >= this.recorridoTotal){
+              this.ganador = "Gano Liebre"
+            }
+            if(this.ganador){
+              console.log(`El resultado es: ${this.ganador}`) 
+            }else{
+              console.log("Siguente ronda")
+            }
+          }
+        }
+      }
+      
+      new Carrera().inicio()
